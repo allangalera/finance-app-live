@@ -15,14 +15,16 @@ import {
   FormHelperText,
   VStack,
 } from "@chakra-ui/react";
+import NumberFormat from "react-number-format";
 import { useRef, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useCategories } from "../../providers/CategoriesProvider";
+import { TRANSACTION_TYPES } from "../../constants";
 
 export const TransactionAddDrawer = ({ addTransaction }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { categories } = useCategories();
-  const { register, reset, getValues } = useForm();
+  const { register, reset, getValues, control } = useForm();
   const btnRef = useRef();
 
   useEffect(() => {
@@ -37,6 +39,7 @@ export const TransactionAddDrawer = ({ addTransaction }) => {
       category: "",
       type: "",
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const onSubmit = () => {
@@ -59,13 +62,26 @@ export const TransactionAddDrawer = ({ addTransaction }) => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader>Add a transaction</DrawerHeader>
 
           <DrawerBody>
             <VStack spacing={4}>
               <FormControl id="value">
                 <FormLabel>Value</FormLabel>
-                <Input type="text" {...register("value")} />
+                <Controller
+                  name="value"
+                  control={control}
+                  render={({ field }) => (
+                    <NumberFormat
+                      {...field}
+                      prefix="R$"
+                      thousandSeparator=" "
+                      customInput={Input}
+                      decimalSeparator=","
+                      decimalScale={2}
+                    />
+                  )}
+                />
                 <FormHelperText>
                   Type the value of your transaction.
                 </FormHelperText>
@@ -89,8 +105,14 @@ export const TransactionAddDrawer = ({ addTransaction }) => {
                 placeholder="Selecione o tipo de transação"
                 {...register("type")}
               >
-                <option value="income">income</option>
-                <option value="expense">expense</option>
+                {Object.keys(TRANSACTION_TYPES).map((key) => (
+                  <option
+                    key={TRANSACTION_TYPES[key]}
+                    id={TRANSACTION_TYPES[key]}
+                  >
+                    {TRANSACTION_TYPES[key]}
+                  </option>
+                ))}
               </Select>
             </VStack>
           </DrawerBody>

@@ -10,6 +10,7 @@ import {
   Icon,
   Tooltip,
 } from "@chakra-ui/react";
+import { TransactionsTypeBadge } from "../TransactionsTypeBadge";
 import { useTransactions } from "../../providers/TransactionsProvider";
 import { FiTrash } from "react-icons/fi";
 
@@ -22,8 +23,15 @@ const TransactionsTableItem = ({ id, value, type, category, date }) => {
 
   return (
     <Tr>
-      <Td>{value}</Td>
-      <Td>{type}</Td>
+      <Td>
+        {new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(value)}
+      </Td>
+      <Td>
+        <TransactionsTypeBadge type={type} />
+      </Td>
       <Td>{category.name}</Td>
       <Td>{new Date(date).toLocaleString()}</Td>
       <Td>

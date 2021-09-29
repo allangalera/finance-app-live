@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { equals } from "ramda";
+import { nanoid } from 'nanoid'
 
 const TransactionsContext = createContext();
 
@@ -24,7 +24,7 @@ export const TransactionsProvider = ({ children }) => {
       ...transactions,
       {
         ...newTransaction,
-        id: transactions.length + 1,
+        id: nanoid(),
       },
     ];
     setTransactions(newTransactions);

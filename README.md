@@ -1,6 +1,14 @@
 # Finance app - GaleraDev
 
 App created on twitch live.
+Technologies used:
+
+- [Nextjs](https://nextjs.org/)
+- [Reactjs](https://reactjs.org/)
+- Context API
+- [Chakra UI](https://chakra-ui.com/)
+- [Emotion](https://emotion.sh/)
+- [React Hook Form](react-hook-form.com/)
 
 # Roadmap
 
@@ -12,5 +20,14 @@ App created on twitch live.
 - [x] Add context api with categories
 - [x] Add localStorage to categories
 - [x] Add remove transaction function
-- [ ] add form to edit categories
-- [ ] react-intl
+- [x] add nanoid as ID to transactions and categories
+- [x] Add categories page
+- [x] Add add categories form
+- [x] Use edited categories on add transactions form
+- [x] Add transaction type badge
+- [x] Deal with currency number format
+- [ ] Form validation (Yup)
+- [ ] Choose charts library
+- [ ] Choose internacionalization libraby (react-intl)
+
+PAUSA PARA A ÁGUA

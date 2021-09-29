@@ -1,5 +1,4 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { Layout } from "../components/Layout";
 import { TransactionsProvider } from "../providers/TransactionsProvider";
 import { CategoriesProvider } from "../providers/CategoriesProvider";
 
@@ -8,9 +7,7 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider>
       <TransactionsProvider>
         <CategoriesProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <Component {...pageProps} />
         </CategoriesProvider>
       </TransactionsProvider>
     </ChakraProvider>

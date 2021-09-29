@@ -2401,6 +2401,11 @@ image-size@1.0.0:
   dependencies:
     queue "6.0.2"
 
+imask@^6.2.0:
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/imask/-/imask-6.2.2.tgz#c72c0ce9a52f57539ecdc264eccc2407d20e13b5"
+  integrity sha512-oREITqngsjD0YxO62UpVQSxLNjIcb/mNO9hX2F8xQ282Kj3X9KXEAobipbUXz5R5NgtiL6nOPrWwo+AnLuz5AQ==
+
 import-fresh@^3.0.0, import-fresh@^3.1.0, import-fresh@^3.2.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.3.0.tgz#37162c25fcb9ebaa2e6e53d5b4d88ce17d9e0c2b"
@@ -2842,6 +2847,11 @@ nanoid@^3.1.23:
   version "3.1.25"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.25.tgz#09ca32747c0e543f0e1814b7d3793477f9c8e152"
   integrity sha512-rdwtIXaXCLFAQbnfqDRnI6jaRHp9fTcYBjtFKE8eezcZ7LuLjhUaQGNeMXf1HmRoCH32CLz6XwX0TtxEOS/A3Q==
+
+nanoid@^3.1.28:
+  version "3.1.28"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.28.tgz#3c01bac14cb6c5680569014cc65a2f26424c6bd4"
+  integrity sha512-gSu9VZ2HtmoKYe/lmyPFES5nknFrHa+/DT9muUFWFMi6Jh9E1I7bkvlQ8xxf1Kos9pi9o8lBnIOkatMhKX/YUw==
 
 native-url@0.3.4:
   version "0.3.4"
@@ -3419,6 +3429,22 @@ react-icons@^4.2.0:
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
   integrity sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==
 
+react-imask@^6.2.2:
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/react-imask/-/react-imask-6.2.2.tgz#1a6574828370158bfa7bf6bdf0db255206ef10c0"
+  integrity sha512-CKZhc3OrcMc+VjihSm4CLJlOXX1HIaVfTzLc498eN6RKveRUUqRAjqZWqLFoqg3D85p08WEl3NDLU7w5HdPcUw==
+  dependencies:
+    imask "^6.2.0"
+    prop-types "^15.7.2"
+
+react-input-mask@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-input-mask/-/react-input-mask-2.0.4.tgz#9ade5cf8196f4a856dbf010820fe75a795f3eb14"
+  integrity sha512-1hwzMr/aO9tXfiroiVCx5EtKohKwLk/NT8QlJXHQ4N+yJJFyUuMT+zfTpLBwX/lK3PkuMlievIffncpMZ3HGRQ==
+  dependencies:
+    invariant "^2.2.4"
+    warning "^4.0.2"
+
 react-is@17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
@@ -3428,6 +3454,13 @@ react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-number-format@^4.7.3:
+  version "4.7.3"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-4.7.3.tgz#e1706204a23c40fa17365a19f5059aabfca1886f"
+  integrity sha512-4EvcANjstypQ5anhanmdEioGc49qbnErfS+yqbhatC0vzQ1okplkWNb0DIY7ABu4RhaxzttEz6pypEy8KsqgBQ==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-refresh@0.8.3:
   version "0.8.3"
@@ -4153,7 +4186,7 @@ vm-browserify@1.1.2, vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-warning@^4.0.3:
+warning@^4.0.2, warning@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
   integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==

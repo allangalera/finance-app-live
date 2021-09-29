@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { nanoid } from "nanoid";
 
 const CategoriesContext = createContext();
 
@@ -8,18 +9,22 @@ const categoriesInitialValue = [
   {
     id: "housing",
     name: "Housing",
+    fixed: true,
   },
   {
     id: "transportation",
     name: "Transportation",
+    fixed: true,
   },
   {
     id: "food",
     name: "Food",
+    fixed: true,
   },
   {
     id: "utilities",
     name: "Utilities",
+    fixed: true,
   },
 ];
 
@@ -42,7 +47,8 @@ export const CategoriesProvider = ({ children }) => {
       ...categories,
       {
         ...newCategory,
-        id: categories.length + 1,
+        id: nanoid(),
+        fixed: false,
       },
     ];
     setCategories(newCategories);
@@ -51,7 +57,7 @@ export const CategoriesProvider = ({ children }) => {
 
   const remove = (categoryId) => {
     const filteredCategories = categories.filter((category) => {
-      return category.id === categoryId;
+      return !(category.id === categoryId);
     });
 
     if (filteredCategories.length === categories.length) return false;
