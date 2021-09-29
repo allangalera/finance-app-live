@@ -29,5 +29,3 @@ Technologies used:
 - [ ] Form validation (Yup)
 - [ ] Choose charts library
 - [ ] Choose internacionalization libraby (react-intl)
-
-PAUSA PARA A ÁGUA
