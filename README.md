@@ -8,7 +8,10 @@ Technologies used:
 - Context API
 - [Chakra UI](https://chakra-ui.com/)
 - [Emotion](https://emotion.sh/)
-- [React Hook Form](react-hook-form.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Yup](https://github.com/jquense/yup)
+- [Jest](https://jestjs.io/)
+- [@testing-library/react](https://testing-library.com/)
 
 # Roadmap
 
@@ -26,6 +29,14 @@ Technologies used:
 - [x] Use edited categories on add transactions form
 - [x] Add transaction type badge
 - [x] Deal with currency number format
-- [ ] Form validation (Yup)
+- [x] Form validation (Yup)
+- [x] Add tests (jest + rtl)
+- [ ] budget per category
+- [ ] mocked/fake backend (msw)
+- [ ] backend (next/api <-> faunadb)
+- [ ] CI/CD (gitlab)
+- [ ] deploy (aws)
+- [ ] auth (next-auth)
+- [ ] Create more tests
 - [ ] Choose charts library
 - [ ] Choose internacionalization libraby (react-intl)

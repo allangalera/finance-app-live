@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { TransactionsProvider } from "../providers/TransactionsProvider";
-import { CategoriesProvider } from "../providers/CategoriesProvider";
+import { TransactionsProvider } from "~/providers/TransactionsProvider";
+import { CategoriesProvider } from "~/providers/CategoriesProvider";
 
 function MyApp({ Component, pageProps }) {
   return (

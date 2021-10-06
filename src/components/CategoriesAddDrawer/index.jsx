@@ -15,10 +15,21 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup
+  .object({
+    name: yup.string().trim().required(),
+  })
+  .required();
 
 export const CategoriesAddDrawer = ({ onSubmit }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { register, reset, getValues } = useForm();
+  const { register, reset, getValues, formState } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
   const btnRef = useRef();
 
   useEffect(() => {
@@ -29,6 +40,7 @@ export const CategoriesAddDrawer = ({ onSubmit }) => {
   }, [isOpen]);
 
   const handleOnSubmit = () => {
+    if (!formState.isValid) return;
     const formData = getValues();
     onSubmit(formData);
     onClose();
@@ -68,7 +80,11 @@ export const CategoriesAddDrawer = ({ onSubmit }) => {
             >
               Cancel
             </Button>
-            <Button onClick={handleOnSubmit} colorScheme="green">
+            <Button
+              onClick={handleOnSubmit}
+              colorScheme="green"
+              disabled={!formState.isValid}
+            >
               Salvar
             </Button>
           </DrawerFooter>

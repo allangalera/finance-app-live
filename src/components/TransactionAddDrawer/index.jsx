@@ -18,13 +18,36 @@ import {
 import NumberFormat from "react-number-format";
 import { useRef, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useCategories } from "../../providers/CategoriesProvider";
-import { TRANSACTION_TYPES } from "../../constants";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useCategories } from "~/providers/CategoriesProvider";
+import { TRANSACTION_TYPES } from "~/constants";
 
 export const TransactionAddDrawer = ({ addTransaction }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { categories } = useCategories();
-  const { register, reset, getValues, control } = useForm();
+  const schema = yup
+    .object({
+      value: yup.string().required(),
+      date: yup
+        .string()
+        .matches(/\d{4}-\d{2}-\d{2}/)
+        .required(),
+      time: yup
+        .string()
+        .matches(/\d{2}:\d{2}/)
+        .required(),
+      category: yup
+        .mixed()
+        .oneOf(categories.map((item) => item.id))
+        .required(),
+      type: yup.mixed().oneOf(Object.values(TRANSACTION_TYPES)).required(),
+    })
+    .required();
+  const { register, reset, getValues, control, formState } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
   const btnRef = useRef();
 
   useEffect(() => {
@@ -43,6 +66,7 @@ export const TransactionAddDrawer = ({ addTransaction }) => {
   }, [isOpen]);
 
   const onSubmit = () => {
+    if (!formState.isValid) return;
     const formData = getValues();
     addTransaction(formData);
     onClose();
@@ -82,9 +106,6 @@ export const TransactionAddDrawer = ({ addTransaction }) => {
                     />
                   )}
                 />
-                <FormHelperText>
-                  Type the value of your transaction.
-                </FormHelperText>
               </FormControl>
               <FormControl id="date">
                 <FormLabel>Date</FormLabel>
@@ -94,26 +115,32 @@ export const TransactionAddDrawer = ({ addTransaction }) => {
                 <FormLabel>Time</FormLabel>
                 <Input type="time" {...register("time")} />
               </FormControl>
-              <Select placeholder="Select a category" {...register("category")}>
-                {categories.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                ))}
-              </Select>
-              <Select
-                placeholder="Selecione o tipo de transação"
-                {...register("type")}
-              >
-                {Object.keys(TRANSACTION_TYPES).map((key) => (
-                  <option
-                    key={TRANSACTION_TYPES[key]}
-                    id={TRANSACTION_TYPES[key]}
-                  >
-                    {TRANSACTION_TYPES[key]}
-                  </option>
-                ))}
-              </Select>
+              <FormControl id="category">
+                <FormLabel>Category</FormLabel>
+                <Select
+                  placeholder="Select a category"
+                  {...register("category")}
+                >
+                  {categories.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.name}
+                    </option>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl id="type">
+                <FormLabel>Type</FormLabel>
+                <Select
+                  placeholder="Selecione o tipo de transação"
+                  {...register("type")}
+                >
+                  {Object.values(TRANSACTION_TYPES).map((value) => (
+                    <option key={value} id={value}>
+                      {value}
+                    </option>
+                  ))}
+                </Select>
+              </FormControl>
             </VStack>
           </DrawerBody>
 
@@ -126,7 +153,11 @@ export const TransactionAddDrawer = ({ addTransaction }) => {
             >
               Cancel
             </Button>
-            <Button onClick={onSubmit} colorScheme="green">
+            <Button
+              onClick={onSubmit}
+              colorScheme="green"
+              disabled={!formState.isValid}
+            >
               Salvar
             </Button>
           </DrawerFooter>

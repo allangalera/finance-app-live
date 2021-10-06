@@ -1,5 +1,6 @@
 import { Badge } from "@chakra-ui/react";
-import { TRANSACTION_TYPES } from "src/constants";
+import { TRANSACTION_TYPES } from "~/constants";
+
 export const TransactionsTypeBadge = ({ type }) => {
   if (type === TRANSACTION_TYPES.INCOME)
     return <Badge colorScheme="green">{TRANSACTION_TYPES.INCOME}</Badge>;
